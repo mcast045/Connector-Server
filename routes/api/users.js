@@ -5,13 +5,7 @@ const bcrypt = require('bcryptjs');
 const JWT = require('jsonwebtoken');
 const config = require('config');
 const { check, validationResult } = require('express-validator'); //Used to validate user input 
-
 const User = require('../../models/User')
-
-// @route     GET api/users
-// @desc      Test route
-// @access    Public
-// router.get('/', (req, res) => res.send('User route'));
 
 // @route     POST api/users
 // @desc      Register route
@@ -36,7 +30,7 @@ router.post('/', [
 
         //Get users gravatar
         const avatar = gravatar.url(email, {
-            s: '200',   //Image size is set to 200
+            s: '200',   //Image size is set to 200px
             r: 'pg',    //Image must be 'PG' rated
             d: 'mm'     //Gives default image
         });
