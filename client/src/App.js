@@ -5,6 +5,7 @@ import Navbar from './Components/layout/Navbar';
 import Landing from './Components/layout/landing';
 import Register from './Components/auth/register';
 import Login from './Components/auth/login';
+import Alert from './Components/layout/Alert';
 import { Provider } from 'react-redux';
 import store from './store';
 
@@ -16,6 +17,7 @@ const App = () =>
         <Navbar />
         <Route exact path='/' component={Landing} />
         <section className='container'>
+          <Alert />
           <Switch>
             <Route path='/register' component={Register} />
             <Route path='/login' component={Login} />
