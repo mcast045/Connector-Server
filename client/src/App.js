@@ -12,6 +12,7 @@ import { loadUser } from './reducers/actions/auth';
 import setAuthToken from './utils/setAuthToken';
 import Dashboard from './Components/dashboard/Dashboard';
 import PrivateRoute from './Components/routing/PrivateRoute';
+import CreateProfile from './Components/profile-form/CreateProfile';
 
 if (localStorage.token) {
   setAuthToken(localStorage.token);
@@ -35,6 +36,7 @@ const App = () => {
               <Route path='/register' component={Register} />
               <Route path='/login' component={Login} />
               <PrivateRoute path='/dashboard' component={Dashboard} />
+              <PrivateRoute path='/create-profile' component={CreateProfile} />
             </Switch>
           </section>
         </Fragment>
