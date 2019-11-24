@@ -3,23 +3,12 @@ import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import './App.css';
 import Navbar from './Components/layout/Navbar';
 import Landing from './Components/layout/landing';
-import Register from './Components/auth/register';
-import Login from './Components/auth/login';
-import Alert from './Components/layout/Alert';
 import { Provider } from 'react-redux';
 import store from './store';
 import { loadUser } from './reducers/actions/auth';
 import setAuthToken from './utils/setAuthToken';
-import Dashboard from './Components/dashboard/Dashboard';
-import PrivateRoute from './Components/routing/PrivateRoute';
-import CreateProfile from './Components/profile-form/CreateProfile';
-import EditProfile from './Components/profile-form/EditProfile';
-import AddExperience from './Components/profile-form/AddExperience';
-import AddEducation from './Components/profile-form/AddEducation';
-import Profiles from './Components/Profiles/profiles';
-import Profile from './Components/Profile/profile';
-import Posts from './Components/Posts/posts';
-import Post from './Components/Post/post';
+import Routes from './Components/routing/routes';
+
 
 
 if (localStorage.token) {
@@ -37,23 +26,10 @@ const App = () => {
       <BrowserRouter>
         <Fragment>
           <Navbar />
-          <Route exact path='/' component={Landing} />
-          <section className='container'>
-            <Alert />
-            <Switch>
-              <Route path='/register' component={Register} />
-              <Route path='/login' component={Login} />
-              <Route path='/profiles' component={Profiles} />
-              <Route path='/profile/:id' component={Profile} />
-              <PrivateRoute path='/dashboard' component={Dashboard} />
-              <PrivateRoute path='/create-profile' component={CreateProfile} />
-              <PrivateRoute path='/edit-profile' component={EditProfile} />
-              <PrivateRoute path='/add-experience' component={AddExperience} />
-              <PrivateRoute path='/add-education' component={AddEducation} />
-              <PrivateRoute path='/posts' component={Posts} />
-              <PrivateRoute path='/post/:id' component={Post} />
-            </Switch>
-          </section>
+          <Switch>
+            <Route exact path='/' component={Landing} />
+            <Route component={Routes} />
+          </Switch>
         </Fragment>
       </BrowserRouter>
     </Provider>
