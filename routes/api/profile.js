@@ -4,6 +4,7 @@ const auth = require('../../middleware/auth') //Any route you want to protect, u
 const { check, validationResult } = require('express-validator'); //Used to validate user input 
 const Profile = require('../../models/Profile');
 const User = require('../../models/User');
+const Post = require('../../models/Posts');
 const request = require('request');
 const config = require('config');
 
@@ -130,6 +131,10 @@ router.get('/user/:user_id', async (req, res) => {
 // @access    Private
 router.delete('/', auth, async (req, res) => {
     try {
+
+        //Remove Posts
+        await Post.deleteMany({ user: req.user.id });
+
         //Remove Profile
         await Profile.findOneAndRemove({ user: req.user.id });
 
