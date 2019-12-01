@@ -143,7 +143,7 @@ export const addExperience = (formData, history) => async dispatch => {
     }
 }
 
-//Add Experience
+//Add Education
 export const addEducation = (formData, history) => async dispatch => {
     try {
         const config = {
